@@ -1,0 +1,38 @@
+@startuml EmployeeManagement
+
+class Employee {
+    + EmployeeID : Integer
+    + Name : String
+    + Email : String
+    + Phone : String
+    + DepartmentID : Integer
+    + SalaryID : Integer
+}
+
+class Department {
+    + DepartmentID : Integer
+    + DepartmentName : String
+}
+
+class Leave {
+    + LeaveID : Integer
+    + EmployeeID : Integer
+    + StartDate : Date
+    + EndDate : Date
+    + LeaveType : String
+    + Status : String
+}
+
+class Salary {
+    + SalaryID : Integer
+    + EmployeeID : Integer
+    + BasicPay : Float
+    + Deductions : Float
+    + NetSalary : Float
+}
+
+Employee "1" -- "1" Salary : has
+Employee "1" -- "0..*" Leave : takes
+Employee "1..*" -- "1" Department : belongs to
+
+@enduml
